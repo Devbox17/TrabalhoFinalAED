@@ -79,8 +79,7 @@ public class Passagem {
                 break;
         }
 
-        return  "\n--- Informações da Passagem ---" + 
-                "\nCódigo da Passagem: " + codigoPassagem + 
+        return  "\nCódigo da Passagem: " + codigoPassagem + 
                 "\nClasse Escolhida: " + nomeClasse + 
                 "\nHorário do Voo: " + horaVoo + 
                 "\nData do Voo: " + dataVoo + 
