@@ -76,8 +76,8 @@ public class Main {
 
                 if (resposta == 1) {
                     passagem = new Passagem();
-                    passagem.emitirPassagem();
-                    passageirosAviao.add(passagem);
+                    passageirosAviao.add(passagem.emitirPassagem());
+                    // passageirosAviao.add(passagem);
                     limiteAviao++;
                 } else {
                     System.out.printf("Okay, tenha um bom dia!\n");
@@ -92,6 +92,7 @@ public class Main {
             Queue<Passagem> passageirosAviao, Queue<Passagem> filaAviao) {
         Scanner scanner = new Scanner(System.in);
         Passagem aux = new Passagem();
+        int valorClasseVoo = 0;
 
         // Do While que vai remover passagens do Vôo
         // e adicionar passagens que estão em fila de espera, a passagens do Vôo
@@ -102,6 +103,7 @@ public class Main {
 
             for (Passagem passagem2 : passageirosAviao) {
                 if (passagem2.codigoPassagem.equals(codigoPassagem)) {
+                    valorClasseVoo = passagem2.classeVoo;
                     passageirosAviao.remove(passagem2);
                     limiteAviao--;
                 }
@@ -109,6 +111,7 @@ public class Main {
 
             for (Passagem passagem3 : filaAviao) {
                 aux = passagem3;
+                aux.classeVoo = valorClasseVoo;
                 filaAviao.remove();
                 passageirosAviao.add(aux);
             }
@@ -142,7 +145,7 @@ public class Main {
             if (resposta == 1) {
                 System.out.printf("Okay, passe o seus dados, vou registrá-lo!\n");
                 passagem = new Passagem();
-                filaAviao.add(passagem);
+                filaAviao.add(passagem.emitirPassagemFilaEspera());
             } else {
                 System.out.printf("Okay, tenha um bom dia!");
             }

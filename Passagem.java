@@ -64,9 +64,31 @@ public class Passagem {
         System.out.printf("\nQual a classe? Digite 1 para 1° Classe, 2 para Executiva ou 3 para Econômica): ");
         passagem.classeVoo = scanner.nextInt();
 
-        codigoPassagem = random.nextInt(2000000) + "0";
-        horaVoo = random.nextInt(13) + ":" + random.nextInt(60);
-        dataVoo = random.nextInt(32) + "/" + random.nextInt(13) + "/" + "2020";
+        passagem.codigoPassagem = random.nextInt(2000000) + "0";
+        passagem.horaVoo = random.nextInt(13) + ":" + random.nextInt(60);
+        passagem.dataVoo = random.nextInt(32) + "/" + random.nextInt(13) + "/" + "2020";
+
+        return passagem;
+    }
+
+    // Cadastra uma nova passagem, coletando dados de um novo passageiro da fila de espera
+    public Passagem emitirPassagemFilaEspera() {
+        Scanner scanner = new Scanner(System.in);
+        Passagem passagem = new Passagem();
+        Random random = new Random();
+
+        System.out.printf("\nNome completo: ");
+        passagem.nomePassageiroVoo = scanner.nextLine();
+
+        System.out.printf("\nLocal de saída: ");
+        passagem.partidaVoo = scanner.nextLine();
+
+        System.out.printf("\nLocal de chegada: ");
+        passagem.chegadaVoo = scanner.nextLine();
+
+        passagem.codigoPassagem = random.nextInt(2000000) + "0";
+        passagem.horaVoo = random.nextInt(13) + ":" + random.nextInt(60);
+        passagem.dataVoo = random.nextInt(32) + "/" + random.nextInt(13) + "/" + "2020";
 
         return passagem;
     }
@@ -91,11 +113,11 @@ public class Passagem {
         }
 
         return  "\nCódigo da Passagem: " + codigoPassagem + 
+                "\nNome do Passageiro: " + nomePassageiroVoo +
                 "\nClasse Escolhida: " + nomeClasse + 
                 "\nHorário do Voo: " + horaVoo + 
                 "\nData do Voo: " + dataVoo + 
                 "\nLocal Partida Voo: " + partidaVoo + 
-                "\nLocal Chega Voo: " + chegadaVoo + 
-                "\nNome do Passageiro: " + nomePassageiroVoo;
+                "\nLocal Chega Voo: " + chegadaVoo;
     }
 }
