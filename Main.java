@@ -1,3 +1,8 @@
+// Integrantes do grupo "Passagens Aéreas e Fila de Espera"
+// Andre Barbosa Coura Valverde 
+// Gustavo Guilherme Soares Garcia Moreira 
+// Matheus Braga Zanon Vitoriano 
+
 import java.util.LinkedList;
 import java.util.Queue;
 import java.util.Scanner;
@@ -11,16 +16,6 @@ public class Main {
         int posicao = 1, limiteAviao = 0, resposta = 0;
 
         menu(limiteAviao, resposta, passagem, passageirosAviao, filaAviao);
-
-        // limiteAviao = inserirPassagemAviao(limiteAviao, resposta, passagem,
-        // passageirosAviao);
-        // inserirFilaDeEspera(limiteAviao, resposta, passagem, filaAviao);
-        // mostrarPassagemAviao(passageirosAviao);
-        // mostrarFilaDeEspera(filaAviao);
-        // limiteAviao = removerPassagemAviao(limiteAviao, resposta, passagem,
-        // passageirosAviao, filaAviao);
-        // mostrarPassagemAviao(passageirosAviao);
-        // mostrarFilaDeEspera(filaAviao);
     }
 
     public static void menu(int limiteAviao, int resposta, Passagem passagem, Queue<Passagem> passageirosAviao,
@@ -42,7 +37,7 @@ public class Main {
 
             switch (resposta) {
                 case 1:
-                    limiteAviao = inserirPassagemAviao(limiteAviao, resposta, passagem, passageirosAviao);
+                    limiteAviao = inserirPassagemAviao(limiteAviao, resposta, passagem, passageirosAviao, filaAviao);
                     break;
 
                 case 2:
@@ -61,16 +56,18 @@ public class Main {
                     mostrarFilaDeEspera(filaAviao);
                     break;
             }
-        } while (resposta != 6);
+        } while (resposta < 6);
     }
 
     public static int inserirPassagemAviao(int limiteAviao, int resposta, Passagem passagem,
-            Queue<Passagem> passageirosAviao) {
+            Queue<Passagem> passageirosAviao, Queue<Passagem> filaAviao) {
         Scanner scanner = new Scanner(System.in);
 
         // O valor 3 foi pré-definido como o valor máximo de passageiros do Avião
         if (limiteAviao == 3) {
-            System.out.printf("Não pode inserir mais passageiros, deve ir pra fila de espera!");
+            System.out.printf("\nNão pode inserir mais passageiros, deve ir pra fila de espera!\n");
+            scanner.nextLine();
+            menu(limiteAviao, resposta, passagem, passageirosAviao, filaAviao);
         } else {
             // While que vai inserir novos passageiros até o "limite do avião"
             while (limiteAviao < 3) {
@@ -79,10 +76,12 @@ public class Main {
 
                 if (resposta == 1) {
                     passagem = new Passagem();
+                    passagem.emitirPassagem();
                     passageirosAviao.add(passagem);
                     limiteAviao++;
                 } else {
                     System.out.printf("Okay, tenha um bom dia!\n");
+                    menu(limiteAviao, resposta, passagem, passageirosAviao, filaAviao);
                 }
             }
         }
@@ -94,6 +93,8 @@ public class Main {
         Scanner scanner = new Scanner(System.in);
         Passagem aux = new Passagem();
 
+        // Do While que vai remover passagens do Vôo
+        // e adicionar passagens que estão em fila de espera, a passagens do Vôo
         do {
             System.out.printf("\nOlá, quer cancelar a sua passagem?");
             System.out.printf("\nEscreva o código da passagem para remoção: ");
@@ -124,12 +125,14 @@ public class Main {
             Queue<Passagem> filaAviao) {
         Scanner scanner = new Scanner(System.in);
 
+        // Esse teste verifica se o Vôo está lotado, se não estiver, deve registrar normalmente
         if (limiteAviao < 3) {
             System.out.printf("\nAinda tem vaga para o avião! Voltar e registrar normalmente.\n");
             scanner.nextLine();
             menu(limiteAviao, resposta, passagem, passageirosAviao, filaAviao);
         }
 
+        // Esse teste verifica se o Vôo está lotado e registra na fila de espera
         System.out.printf("\n---- (Avião está Lotado) ----\n");
         if (limiteAviao == 3) {
             System.out.printf("\nBem, o avião está lotado!\nMas você pode ficar em uma fila de espera.");
@@ -137,7 +140,7 @@ public class Main {
             resposta = scanner.nextInt();
 
             if (resposta == 1) {
-                System.out.printf("Okay, passe o seus dados, vou registra-lo!\n");
+                System.out.printf("Okay, passe o seus dados, vou registrá-lo!\n");
                 passagem = new Passagem();
                 filaAviao.add(passagem);
             } else {
