@@ -27,25 +27,6 @@ public class Passagem {
         nomePassageiroVoo = "None";
     }
 
-    // Construtor Gerado para testes
-    // Passagem() {
-    // Random random = new Random();
-    // NameGenerator nameGenerator = new NameGenerator(10);
-
-    // codigoPassagem = random.nextInt(2000000) + "0";
-    // classeVoo = random.nextInt(3);
-
-    // while (classeVoo == 0) {
-    // classeVoo = random.nextInt(3);
-    // }
-
-    // horaVoo = random.nextInt(13) + ":" + random.nextInt(60);
-    // dataVoo = random.nextInt(32) + "/" + random.nextInt(13) + "/" + "2020";
-    // partidaVoo = "" + nameGenerator.getName();
-    // chegadaVoo = "" + nameGenerator.getName();
-    // nomePassageiroVoo = "" + nameGenerator.getName();
-    // }
-
     // Cadastra uma nova passagem, coletando dados de um novo passageiro
     public Passagem emitirPassagem() {
         Scanner scanner = new Scanner(System.in);

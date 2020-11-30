@@ -18,6 +18,7 @@ public class Main {
         menu(limiteAviao, resposta, passagem, passageirosAviao, filaAviao);
     }
 
+    // Função que retorna um menu 
     public static void menu(int limiteAviao, int resposta, Passagem passagem, Queue<Passagem> passageirosAviao,
             Queue<Passagem> filaAviao) {
         Scanner scanner = new Scanner(System.in);
@@ -59,9 +60,10 @@ public class Main {
         } while (resposta < 6);
     }
 
+    // Função que inseri uma nova passagem em um Vôo
     public static int inserirPassagemAviao(int limiteAviao, int resposta, Passagem passagem,
-            Queue<Passagem> passageirosAviao, Queue<Passagem> filaAviao) {
-        Scanner scanner = new Scanner(System.in);
+        Queue<Passagem> passageirosAviao, Queue<Passagem> filaAviao) {
+         Scanner scanner = new Scanner(System.in);
 
         // O valor 3 foi pré-definido como o valor máximo de passageiros do Avião
         if (limiteAviao == 3) {
@@ -88,8 +90,9 @@ public class Main {
         return limiteAviao;
     }
 
+    // Função que remove uma nova passagem em um Vôo
     public static int removerPassagemAviao(int limiteAviao, int resposta, Passagem passagem,
-            Queue<Passagem> passageirosAviao, Queue<Passagem> filaAviao) {
+        Queue<Passagem> passageirosAviao, Queue<Passagem> filaAviao) {
         Scanner scanner = new Scanner(System.in);
         Passagem aux = new Passagem();
         int valorClasseVoo = 0;
@@ -124,8 +127,9 @@ public class Main {
         return limiteAviao;
     }
 
+    // Função que inseri uma nova passagem em uma fila de espera
     public static void inserirFilaDeEspera(int limiteAviao, int resposta, Passagem passagem, Queue<Passagem> passageirosAviao,
-            Queue<Passagem> filaAviao) {
+        Queue<Passagem> filaAviao) {
         Scanner scanner = new Scanner(System.in);
 
         // Esse teste verifica se o Vôo está lotado, se não estiver, deve registrar normalmente
@@ -152,6 +156,7 @@ public class Main {
         }
     }
 
+    // Função que mostra passagem de um Vôo
     public static void mostrarPassagemAviao(Queue<Passagem> passagens) {
         Scanner scanner = new Scanner(System.in);
 
@@ -163,6 +168,7 @@ public class Main {
         scanner.nextLine();
     }
 
+    // Função que mostra passagem da fila de espera
     public static void mostrarFilaDeEspera(Queue<Passagem> passagens) {
         Scanner scanner = new Scanner(System.in);
 
